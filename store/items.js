@@ -57,25 +57,23 @@ export default {
 			// });
 			// console.log(response);
 
-			fetch('https://ai.vp-pspu.cf/api?q="шапка"', {
-				mode: 'no-cors',
+			fetch('https://ai.vp-pspu.cf/api', {
+				method: 'GET',
+				mode: 'cors',
 				headers: {
-					"ngrok-skip-browser-warning": "1"
+					'Access-Control-Allow-Origin': '*'
 				}
 			})
-				.then((response) => {
-					return response;
-				})
-				.then((data) => {
-					console.log(data);
-				});
+			.then((response) => {
+				return response;
+			})
+			.then((data) => {
+				console.log(data);
+			});
 
 
-			// this.$axios.setHeader('ngrok-skip-browser-warning', 1);
-			// this.$axios.setHeader('Content-Type', 'application/json');
-			// this.$axios.post('https://cbdd-46-146-224-1.ngrok-free.app/api', {
-			// 	value: 12
-			// })
+			// this.$axios.setHeader("Access-Control-Allow-Origin", "*");
+			// this.$axios.get('https://ai.vp-pspu.cf/api')
 			// .then(function (response) {
 			// 	console.log(response);
 			// })
