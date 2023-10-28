@@ -59,7 +59,7 @@ export default {
 
 			fetch('https://ai.vp-pspu.cf/api', {
 				method: 'GET',
-				mode: 'cors',
+				mode: 'no-cors',
 				headers: {
 					'Access-Control-Allow-Origin': '*'
 				}
