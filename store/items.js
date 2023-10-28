@@ -45,29 +45,29 @@ export default {
 			// var data = new FormData();
 			// data.append( "json", JSON.stringify( {value: 234} ) );
 
-			// let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
-			// 	method: "POST",
-			// 	mode: "no-cors",
-			// 	headers: {
-			// 		'ngrok-skip-browser-warning': 1,
-			// 		'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: data
-			// });
-			// console.log(response);
-
-			this.$axios.setHeader('ngrok-skip-browser-warning', 1);
-			this.$axios.setHeader('Content-Type', 'application/json');
-			this.$axios.post('https://cbdd-46-146-224-1.ngrok-free.app/api', {
-				value: 12
-			})
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
+			let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
+				method: "POST",
+				mode: "no-cors",
+				headers: {
+					'ngrok-skip-browser-warning': 1,
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: data
 			});
+			console.log(response);
+
+			// this.$axios.setHeader('ngrok-skip-browser-warning', 1);
+			// this.$axios.setHeader('Content-Type', 'application/json');
+			// this.$axios.post('https://cbdd-46-146-224-1.ngrok-free.app/api', {
+			// 	value: 12
+			// })
+			// .then(function (response) {
+			// 	console.log(response);
+			// })
+			// .catch(function (error) {
+			// 	console.log(error);
+			// });
 			
 			// const data = await this.$axios.get('https://3ddf-46-146-224-1.ngrok-free.app/api');
 
