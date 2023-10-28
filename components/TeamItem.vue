@@ -11,5 +11,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.team-item
 </style>

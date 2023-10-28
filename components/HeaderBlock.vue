@@ -2,8 +2,8 @@
 	<header class="header">
 		<div class="container header__inner">
 			<Icon name="logoSvg" class="header__logo"/>
-			<nuxt-link to="/" :class="['header__green-link link-opacity', {'link-mobile': $nuxt.$route.path == '/howItWork'}]">Создать запрос</nuxt-link>
-			<nuxt-link to="howItWork" :class="['link-opacity', {'link-mobile': $nuxt.$route.path == '/'}]">Как это работает</nuxt-link>
+			<nuxt-link to="/" :class="['header__green-link', {'link-mobile': $nuxt.$route.path == '/howItWork'}]">Создать запрос</nuxt-link>
+			<nuxt-link to="howItWork" :class="[{'link-mobile': $nuxt.$route.path == '/'}]">Как это работает</nuxt-link>
 		</div>
 	</header>
 </template>
@@ -45,9 +45,18 @@ export default {
 	& a
 		font-size: clamp(16px, 2vw, 20px)
 		font-weight: 500
+		transition: .3s color
 
 		@media (max-width: $tab)
 			display: none
+
+		&:nth-child(2)			
+			&:hover
+				color: $white
+		&:last-child
+			&:hover
+				color: $green
+			
 
 		&.link-mobile
 			display: block !important

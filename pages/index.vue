@@ -154,6 +154,6 @@ export default {
 				50%
 					transform: translate(50%, 50%)
 				100%
-				transform: translate(0, 0)
+					transform: translate(0, 0)
 
 </style>

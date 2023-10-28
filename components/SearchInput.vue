@@ -50,8 +50,6 @@ export default {
 <style lang="sass" scoped>
 @import '~/assets/scss/colors'
 @import '~/assets/scss/media'
-.input-wrapper
-
 .form
 	position: relative
 	display: flex
