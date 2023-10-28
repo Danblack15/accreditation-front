@@ -42,8 +42,8 @@ export default {
 			if (state.allData) return;
 
 			commit('toggleLoading', true);
-			// var data = new FormData();
-			// data.append( "json", JSON.stringify( {value: 234} ) );
+			var data = new FormData();
+			data.append("json", JSON.stringify( {value: 234} ));
 
 			let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
 				method: "POST",
