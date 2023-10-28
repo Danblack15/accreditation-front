@@ -2,6 +2,7 @@
   <div class="how-work container">
 	<h1>КАК ЭТО РАБОТАЕТ?</h1>
 	<WorkMain />
+	<Team />
   </div>
 </template>
 
