@@ -43,7 +43,7 @@ export default {
 			
 			commit('toggleLoading', true);
 
-			const { data } = await this.$axios.get('http://ai.vp-pspu.cf/api');
+			const { data } = await this.$axios.get('http://ai.vp-pspu.cf/');
 			console.log(data);
 
 			commit('setAllData', data);

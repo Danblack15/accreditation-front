@@ -7,6 +7,15 @@ body
 	color: $white
 	overflow-x: hidden
 
+	&::-webkit-scrollbar
+		width: 6px
+
+	&::-webkit-scrollbar-track
+		background: $black
+
+	&::-webkit-scrollbar-thumb
+		background: $white
+
 .body-inner
 	display: flex
 	flex-direction: column

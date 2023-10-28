@@ -40,6 +40,8 @@ export default {
 
 	&:hover
 		background: $green-hover
+
+	&:focus
 		transform: scale(0.95)
 
 </style>

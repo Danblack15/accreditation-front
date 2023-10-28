@@ -2,8 +2,8 @@
 	<header class="header">
 		<div class="container header__inner">
 			<Icon name="logoSvg" class="header__logo"/>
-			<a href="/" class="header__green-link link-opacity">Создать запрос</a>
-			<a href="#" class="link-opacity">Как это работает</a>
+			<nuxt-link to="/" class="header__green-link link-opacity">Создать запрос</nuxt-link>
+			<nuxt-link to="howItWork" class="link-opacity">Как это работает</nuxt-link>
 		</div>
 	</header>
 </template>
