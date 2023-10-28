@@ -42,20 +42,34 @@ export default {
 			if (state.allData) return;
 
 			commit('toggleLoading', true);
-			var data = new FormData();
-			data.append("json", JSON.stringify( {value: 234} ));
+			// var data = new FormData();
+			// data.append("json", JSON.stringify( {value: 234} ));
 
-			let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
-				method: "POST",
-				mode: "no-cors",
+			// let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
+			// 	method: "POST",
+			// 	mode: "no-cors",
+			// 	headers: {
+			// 		'ngrok-skip-browser-warning': 1,
+			// 		'Accept': 'application/json',
+			// 		'Content-Type': 'application/json'
+			// 	},
+			// 	body: data
+			// });
+			// console.log(response);
+
+			fetch('https://ai.vp-pspu.cf/api?q="шапка"', {
+				mode: 'no-cors',
 				headers: {
-					'ngrok-skip-browser-warning': 1,
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: data
-			});
-			console.log(response);
+					"ngrok-skip-browser-warning": "1"
+				}
+			})
+				.then((response) => {
+					return response;
+				})
+				.then((data) => {
+					console.log(data);
+				});
+
 
 			// this.$axios.setHeader('ngrok-skip-browser-warning', 1);
 			// this.$axios.setHeader('Content-Type', 'application/json');
@@ -68,7 +82,7 @@ export default {
 			// .catch(function (error) {
 			// 	console.log(error);
 			// });
-			
+
 			// const data = await this.$axios.get('https://3ddf-46-146-224-1.ngrok-free.app/api');
 
 			// if (data) {
