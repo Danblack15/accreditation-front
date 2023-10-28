@@ -57,22 +57,51 @@ export default {
 			// });
 			// console.log(response);
 
-			fetch('https://ai.vp-pspu.cf/main', {
-				method: 'POST',
-				mode: 'cors',
-				body: { value: "Критерии качества для головных уборов" },
-				headers: {
-					'Access-Control-Allow-Origin': '*',
-					'Content-Type': 'application/json'
-				}
-			})
-			.then((response) => {
-				console.log(response);
-				return response;
-			})
-			.then((data) => {
-				console.log(data);
-			});
+			// fetch('https://ai.vp-pspu.cf/main', {
+			// 	method: 'POST',
+			// 	mode: 'no-cors',
+			// 	body: { value: "Критерии качества для головных уборов" },
+			// 	// headers: {
+			// 	// 	'Access-Control-Allow-Origin': 'http://46.146.224.1:3000/',
+			// 	// 	'Content-Type': 'application/json'
+			// 	// }
+			// })
+			// 	.then((response) => {
+			// 		return response;
+			// 	})
+			// 	.then((data) => {
+			// 		console.log(data);
+			// 	});
+
+			var payload = {
+				value: 'Критерии качества для головных уборов'
+			};
+
+			var data = new FormData();
+			data.append("json", JSON.stringify(payload));
+			console.log(data);
+
+			fetch("https://ai.vp-pspu.cf/main",
+				{
+					method: "POST",
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({value: 'Критерии качества для головных уборов'})
+				})
+				.then(function (res) { return res.json(); })
+				.then(function (data) { alert(JSON.stringify(data)) })
+
+			// const res = await fetch('https://ai.vp-pspu.cf/main', {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		'Accept': 'application/json',
+			// 		'Content-Type': 'application/json'
+			// 	},
+			// 	mode: 'no-cors',
+			// 	body: JSON.stringify({ value: 'Критерии качества для головных уборов' })
+			// });
+			// console.log(res);
 
 
 			// this.$axios.setHeader("Access-Control-Allow-Origin", "*");
