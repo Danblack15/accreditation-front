@@ -45,9 +45,9 @@ export default {
 			// var data = new FormData();
 			// data.append("json", JSON.stringify( {value: 234} ));
 
-			// let response = await fetch('https://cbdd-46-146-224-1.ngrok-free.app/api', {
+			// let response = await fetch('https://ai.vp-pspu.cf/main', {
 			// 	method: "POST",
-			// 	mode: "no-cors",
+			// 	mode: "cors",
 			// 	headers: {
 			// 		'ngrok-skip-browser-warning': 1,
 			// 		'Accept': 'application/json',
@@ -57,29 +57,33 @@ export default {
 			// });
 			// console.log(response);
 
-			fetch('https://ai.vp-pspu.cf/api', {
-				method: 'GET',
-				mode: 'no-cors',
-				headers: {
-					'Access-Control-Allow-Origin': 'https://effortless-douhua-c2739d.netlify.app/'
-				}
-			})
-			.then((response) => {
-				return response;
-			})
-			.then((data) => {
-				console.log(data);
-			});
-
-
-			// this.$axios.setHeader("Access-Control-Allow-Origin", "*");
-			// this.$axios.get('https://ai.vp-pspu.cf/api')
-			// .then(function (response) {
-			// 	console.log(response);
+			// fetch('https://ai.vp-pspu.cf/main', {
+			// 	method: 'POST',
+			// 	mode: 'cors',
+			// 	body: { "value": 'Критерии качества для головных уборов' },
+			// 	headers: {
+			// 		'Access-Control-Allow-Origin': '*',
+			// 		'Content-Type': 'application/json'
+			// 	}
 			// })
-			// .catch(function (error) {
-			// 	console.log(error);
+			// .then((response) => {
+			// 	return response;
+			// })
+			// .then((data) => {
+			// 	console.log(data);
 			// });
+
+
+			this.$axios.setHeader("Access-Control-Allow-Origin", "*");
+			this.$axios.post('https://ai.vp-pspu.cf/api', {
+				"value": "Критерии качества для головных уборов"
+			})
+			.then(function (response) {
+				console.log(response);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 
 			// const data = await this.$axios.get('https://3ddf-46-146-224-1.ngrok-free.app/api');
 
