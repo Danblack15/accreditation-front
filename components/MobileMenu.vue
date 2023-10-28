@@ -8,7 +8,7 @@
 			<nuxt-link to="/">Сделать запрос</nuxt-link>
 		</div>
 		<div class="mobile-menu__link" @click="$nuxt.$emit('setMenuFn')">
-			<nuxt-link to="howItWork">Как это работает?</nuxt-link>
+			<nuxt-link to="/howItWork">Как это работает?</nuxt-link>
 		</div>
 	</div>
   </div>
