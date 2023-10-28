@@ -57,33 +57,34 @@ export default {
 			// });
 			// console.log(response);
 
-			// fetch('https://ai.vp-pspu.cf/main', {
-			// 	method: 'POST',
-			// 	mode: 'cors',
-			// 	body: { "value": 'Критерии качества для головных уборов' },
-			// 	headers: {
-			// 		'Access-Control-Allow-Origin': '*',
-			// 		'Content-Type': 'application/json'
-			// 	}
-			// })
-			// .then((response) => {
-			// 	return response;
-			// })
-			// .then((data) => {
-			// 	console.log(data);
-			// });
-
-
-			this.$axios.setHeader("Access-Control-Allow-Origin", "*");
-			this.$axios.post('https://ai.vp-pspu.cf/api', {
-				"value": "Критерии качества для головных уборов"
+			fetch('https://ai.vp-pspu.cf/main', {
+				method: 'POST',
+				mode: 'cors',
+				body: { value: "Критерии качества для головных уборов" },
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Content-Type': 'application/json'
+				}
 			})
-			.then(function (response) {
+			.then((response) => {
 				console.log(response);
+				return response;
 			})
-			.catch(function (error) {
-				console.log(error);
+			.then((data) => {
+				console.log(data);
 			});
+
+
+			// this.$axios.setHeader("Access-Control-Allow-Origin", "*");
+			// this.$axios.post('https://ai.vp-pspu.cf/api', {
+			// 	"value": "Критерии качества для головных уборов"
+			// })
+			// .then(function (response) {
+			// 	console.log(response);
+			// })
+			// .catch(function (error) {
+			// 	console.log(error);
+			// });
 
 			// const data = await this.$axios.get('https://3ddf-46-146-224-1.ngrok-free.app/api');
 
