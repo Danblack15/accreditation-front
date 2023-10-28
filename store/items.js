@@ -61,7 +61,7 @@ export default {
 				method: 'GET',
 				mode: 'no-cors',
 				headers: {
-					'Access-Control-Allow-Origin': '*'
+					'Access-Control-Allow-Origin': 'https://effortless-douhua-c2739d.netlify.app/'
 				}
 			})
 			.then((response) => {
