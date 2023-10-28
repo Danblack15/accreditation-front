@@ -1,0 +1,31 @@
+@import './colors.scss'
+@import './media.sass'
+
+body
+	font-family: 'Gilroy', sans-serif
+	background: $black
+	color: $white
+	overflow-x: hidden
+
+.body-inner
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+
+main
+	flex-grow: 1
+	width: 100%
+
+footer
+	flex-shrink: 0
+
+.header__logo
+	& svg
+		width: 200px
+		height: auto
+
+		@media (max-width: $tab)
+			width: 180px
+
+		@media (max-width: $mob)
+			width: 160px
