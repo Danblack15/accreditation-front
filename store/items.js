@@ -58,12 +58,17 @@ export default {
 		async getRecomendation({ commit }, category) {
 			commit('toggleLoading', true);
 
-			var payload = {
+			let payload = {
 				value: category
 			};
 
-			var data = new FormData();
+			let data = new FormData();
 			data.append("json", JSON.stringify(payload));
+
+			let newData;
+			for (var [key, value] of data.entries()) {
+				newData = value.split('"')[3];
+			}
 
 			fetch("https://ai.vp-pspu.cf/main",
 				{
@@ -71,7 +76,7 @@ export default {
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					body: JSON.stringify({ value: data })
+					body: JSON.stringify({ value: newData })
 				})
 				.then(function (res) { return res.json(); })
 				.then(function (data) {
