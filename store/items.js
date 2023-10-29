@@ -1,85 +1,69 @@
 export default {
 	state: () => ({
-		allItems: [],
-		allData: null,
-		isLoading: false
+		allCategories: null,
+		recomendation: null,
+		isLoading: false,
+		activeCategory: null,
+		step: 1
 	}),
 
 	getters: {
-		getAllitems(state) {
-			return state.allItems;
-		},
-
 		getLoading(state) {
 			return state.isLoading;
 		},
 
-		getAllData(state) {
-			return state.allData;
+		getAllCategories(state) {
+			return state.allCategories;
+		},
+
+		getStep(state) {
+			return state.step;
+		},
+
+		getRecomendation(state) {
+			return state.recomendation
+		},
+
+		getActiveCategory(state) {
+			return state.activeCategory
 		}
 	},
 
 	mutations: {
-		setNewItem(state, newItem) {
-			state.allItems.push(newItem);
-		},
-
 		toggleLoading(state, value) {
 			state.isLoading = value;
 		},
 
-		setAllData(state, data) {
-			state.allData = data;
+		setAllCategories(state, data) {
+			state.allCategories = data;
+		},
+
+		setRecomendation(state, data) {
+			state.recomendation = data;
+		},
+
+		setStep(state, isIncrement) {
+			if (isIncrement)
+				state.step = state.step + 1;
+			else
+				state.step = state.step - 1;
+		},
+
+		setActiveCategory(state, data) {
+			state.activeCategory = data;
 		}
 	},
 
 	actions: {
-		addNewItem({ commit }, newItem) {
-			commit('setNewItem', newItem);
-		},
-
-		async fetchData({ commit, state }) {
-			if (state.allData) return;
-
+		async getRecomendation({ commit }, category) {
 			commit('toggleLoading', true);
-			// var data = new FormData();
-			// data.append("json", JSON.stringify( {value: 234} ));
-
-			// let response = await fetch('https://ai.vp-pspu.cf/main', {
-			// 	method: "POST",
-			// 	mode: "cors",
-			// 	headers: {
-			// 		'ngrok-skip-browser-warning': 1,
-			// 		'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: data
-			// });
-			// console.log(response);
-
-			// fetch('https://ai.vp-pspu.cf/main', {
-			// 	method: 'POST',
-			// 	mode: 'no-cors',
-			// 	body: { value: "Критерии качества для головных уборов" },
-			// 	// headers: {
-			// 	// 	'Access-Control-Allow-Origin': 'http://46.146.224.1:3000/',
-			// 	// 	'Content-Type': 'application/json'
-			// 	// }
-			// })
-			// 	.then((response) => {
-			// 		return response;
-			// 	})
-			// 	.then((data) => {
-			// 		console.log(data);
-			// 	});
 
 			var payload = {
-				value: 'Критерии качества для головных уборов'
+				value: category
 			};
 
 			var data = new FormData();
 			data.append("json", JSON.stringify(payload));
-			console.log(data);
 
 			fetch("https://ai.vp-pspu.cf/main",
 				{
@@ -87,42 +71,44 @@ export default {
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					body: JSON.stringify({value: 'Критерии качества для головных уборов'})
+					body: JSON.stringify({value: data})
 				})
 				.then(function (res) { return res.json(); })
-				.then(function (data) { alert(JSON.stringify(data)) })
+				.then(function (data) { 
+					commit('setRecomendation', data);
+					commit('toggleLoading', false);
+					commit('setActiveCategory', category);
+				})
+		},
 
-			// const res = await fetch('https://ai.vp-pspu.cf/main', {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	mode: 'no-cors',
-			// 	body: JSON.stringify({ value: 'Критерии качества для головных уборов' })
-			// });
-			// console.log(res);
+		async getCategories({ commit }, input) {
+			commit('toggleLoading', true);
+			
+			let payload = {
+				value: input
+			};
 
+			let data = new FormData();
+			data.append("json", JSON.stringify(payload));
 
-			// this.$axios.setHeader("Access-Control-Allow-Origin", "*");
-			// this.$axios.post('https://ai.vp-pspu.cf/api', {
-			// 	"value": "Критерии качества для головных уборов"
-			// })
-			// .then(function (response) {
-			// 	console.log(response);
-			// })
-			// .catch(function (error) {
-			// 	console.log(error);
-			// });
+			fetch("https://ai.vp-pspu.cf/classifier/model_request",
+				{
+					method: "POST",
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({question: data})
+				})
+				.then(function (res) { return res.json(); })
+				.then(function (data) { 
+					commit('setAllCategories', data);
+					commit('toggleLoading', false);
+					commit('setStep', true);
+				})
+		},
 
-			// const data = await this.$axios.get('https://3ddf-46-146-224-1.ngrok-free.app/api');
-
-			// if (data) {
-			// 	console.log(data);
-
-			// 	commit('setAllData', data);
-			// }
-			// commit('toggleLoading', false);
+		setNewStep({ commit }, data) {
+			commit('setStep', data);
 		}
 	}
 

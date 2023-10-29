@@ -9,7 +9,6 @@
 			<SearchInput />
 			<p class="index-page__hint">Мы помогаем <span>участникам рынка</span> справиться с подготовкой товара к <span>сертификации</span></p>
 		</div>
-		<button @click="fetchData()">Click</button>
 		<div class="index-page__circles">
 			<div class="index-page__circle index-page__circle--big"></div>
 			<div class="index-page__circle index-page__circle--mid"></div>
@@ -19,25 +18,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 export default {
 	name: 'IndexPage',
-
-	methods: {
-		...mapActions({
-			addNewItem: "items/addNewItem",
-			fetchData: "items/fetchData"
-		})
-	},
-
-	computed: {
-		...mapGetters({
-			items: "items/getAllitems",
-			isLoading: "items/getLoading",
-			allData: "items/getAllData"
-		})
-	},
 }
 </script>
 
@@ -47,6 +29,9 @@ export default {
 
 .index-page
 	padding-top: 88px
+
+	@media (max-width: $tab-sm)
+		padding-bottom: 40px
 
 	@media (max-width: $mob)
 		padding-top: 56px

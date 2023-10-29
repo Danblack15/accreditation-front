@@ -1,9 +1,9 @@
 <template>
-	<a :href="link" v-if="link" class="btn">
+	<a :href="link" v-if="link" :class="['btn', {'btn--grey': grey}]">
 		<slot></slot>
 	</a>
 
-	<button v-else class="btn">
+	<button v-else :class="['btn', {'btn--grey': grey}]">
 		<slot></slot>
 	</button>
 </template>
@@ -14,6 +14,10 @@ export default {
 	props: {
 		link: {
 			type: String
+		},
+		grey: {
+			type: Boolean,
+			default: false
 		}
 	}
 }
@@ -38,10 +42,17 @@ export default {
 		padding: 12px 0
 		border-radius: 7px
 
+
 	&:hover
 		background: $green-hover
 
 	&:focus
 		transform: scale(0.95)
+
+	&--grey
+		background: $dopBlack2
+
+		&:hover
+			background: $darkBlue
 
 </style>
