@@ -5,7 +5,7 @@
 			<p class="recomendations__category">{{ activeCategory }}</p>
 			<div class="recomendations__text-wrapper">
 				<p>Рекомендации по методам проверки</p>
-				<p v-if="recomendation">{{ recomendation }}</p>
+				<p v-if="recomendation">{{ recomendation.value.content }}</p>
 			</div>
 		</div>
 		<div class="categories-list__buttons">
