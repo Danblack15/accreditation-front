@@ -1,5 +1,8 @@
 <template>
 	<div class="index-page">
+		<div class="loading" v-show="isLoading">
+			<img src="~assets/img/loading.gif" alt="loading" />
+		</div>
 		<div class="container">
 			<div class="index-page__title">
 				<h3>система по определению </h3>
@@ -18,8 +21,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
 	name: 'IndexPage',
+
+	computed: {
+		...mapGetters({
+			isLoading: 'items/getLoading'
+		})
+	}
 }
 </script>
 
@@ -140,5 +151,21 @@ export default {
 					transform: translate(50%, 50%)
 				100%
 					transform: translate(0, 0)
+
+	.loading
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: rgba($black, .7)
+		display: flex
+		justify-content: center
+		align-items: center
+		z-index: 10
+
+		& img
+			@media (max-width: $tab-sm)
+				width: 100px
 
 </style>
